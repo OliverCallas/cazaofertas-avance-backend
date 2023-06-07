@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head >
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +15,9 @@
     <title>Login</title> 
 </head>
 <body>
-    <header >
+    <div id="header">
     	<h2>CAZA OFERTAS</h2>
-    </header>
+    </div>
     <div id="body">
     <div class="container">
         <div class="forms">
@@ -27,13 +27,13 @@
                 
                 <span class="title">Ingresar</span>
 
-                <form th:action="@{/login}" method="post">
+                <form action="#">
                     <div class="input-field">
-                        <input type="text" placeholder="Escribe tu Correo" name="username" id="username" autofocus required />
+                        <input type="text" placeholder="Escribe tu Correo" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Escribe tu Contraseña" name="password" id="password" required />
+                        <input type="password" class="password" placeholder="Escribe tu Contraseña" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -48,7 +48,7 @@
                     </div>
 				-->
                     <div class="input-field button">
-                        <input type="submit" value="Ingresar">
+                        <a href="/app/index"><input type="button" value="Ingresar"></a>
                     </div>
                 </form>
 
@@ -104,12 +104,12 @@
     </div>
     
     </div>
-    <footer id="footer">
+    <div id="footer">
     <div class="tyc">
     	<h6 style="color:#9D9D9D ">Terminos y Condiciones | Politica de Privacidad</h6>
     	<h6 style="color:#9D9D9D ">© 2023 Coryright. Caza Ofertas. Todos los Derechos Reservados</h6>
     	</div>
-    </footer>
+    </div>
 
      <script src="../login.js"></script> 
 </body>
