@@ -42,6 +42,8 @@ public class SpringSecurityConfig {
     	String[] staticResources = {
                 "/index.css",
                 "/img/**",
+                "/css/**",
+                "/js/**",
                 "/style.css",
                 "/login.js",};
     	
