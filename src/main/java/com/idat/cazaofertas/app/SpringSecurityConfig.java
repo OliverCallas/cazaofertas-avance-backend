@@ -30,7 +30,7 @@ public class SpringSecurityConfig {
  
         manager.createUser(User.withUsername("admin")
                                .password(passwordEncoder().encode("321"))
-                               .roles("ADMIN", "USER").build());
+                               .roles("ADMIN","USER").build());
  
         return manager;
     }
@@ -46,7 +46,9 @@ public class SpringSecurityConfig {
                 "/login.js",};
     	
         http.authorizeRequests().antMatchers("/","/index").permitAll()
-                .antMatchers("/menu").hasAnyRole("ADMIN").antMatchers(staticResources).permitAll()
+                .antMatchers("/menu").hasAnyRole("USER")
+                .antMatchers("/usuarios").hasAnyRole("ADMIN")
+                .antMatchers(staticResources).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
