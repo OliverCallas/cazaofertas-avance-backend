@@ -1,12 +1,16 @@
 package com.idat.cazaofertas.app;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -14,26 +18,35 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SpringSecurityConfig {
 
-	@Bean
-    public static BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Autowired
+	private DataSource datasource;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
  
+	@Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception{
+    	
+    	build.jdbcAuthentication().dataSource(datasource).passwordEncoder(passwordEncoder).
+    	usersByUsernameQuery("select username, password, enabled from usuarios where username=?").
+    	authoritiesByUsernameQuery("select username, rol from usuarios where username=?");
+    }
+	
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
  
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
  
-        manager.createUser(User.withUsername("user")
-                               .password(passwordEncoder().encode("123"))
-                               .roles("USER").build());
+        /*manager.createUser(User.withUsername("user")
+                               .password(passwordEncoder.encode("123"))
+                               .roles("USER").build()); */
  
         manager.createUser(User.withUsername("admin")
-                               .password(passwordEncoder().encode("321"))
+                               .password(passwordEncoder.encode("321"))
                                .roles("ADMIN","USER").build());
  
         return manager;
-    }
+    } 
  
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -48,8 +61,9 @@ public class SpringSecurityConfig {
                 "/login.js",};
     	
         http.authorizeRequests().antMatchers("/","/index").permitAll()
-                .antMatchers("/menu").hasAnyRole("USER")
+                .antMatchers("/menu").hasAnyRole("USER","ADMIN")
                 .antMatchers("/usuarios").hasAnyRole("ADMIN")
+                .antMatchers("/registro").hasAnyRole("ADMIN")
                 .antMatchers(staticResources).permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -59,4 +73,6 @@ public class SpringSecurityConfig {
  
         return http.build();
     }
+    
+    
 }
