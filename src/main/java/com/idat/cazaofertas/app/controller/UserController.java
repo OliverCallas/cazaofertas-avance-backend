@@ -12,32 +12,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.idat.cazaofertas.app.models.entity.Usuario;
-import com.idat.cazaofertas.app.models.service.IUsuarioService;
+import com.idat.cazaofertas.app.models.entity.Employee;
+import com.idat.cazaofertas.app.models.entity.User;
+import com.idat.cazaofertas.app.models.service.IUserService;
 
 @Controller
-public class UsuarioController {
+public class UserController {
 
 	@Autowired
-	private IUsuarioService iUsuarioService;
+	private IUserService iUserService;
 	
 	@GetMapping("/registro")
 	public String registroUsuario(Map<String, Object> model) {
-		Usuario usuario = new Usuario();
-		model.put("usuario", usuario);
+		
+		model.put("user", new User());
+		model.put("employee", new Employee());
+		
 		return "registro";
 	}
 	
 	@PostMapping("/registro")
-	public String registrarUsuario(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
+	public String registrarUsuario(@Valid User user, BindingResult brUser, @Valid Employee employee, BindingResult brEmployee, Model model, SessionStatus status) {
 		
-		if(result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario de Cliente");
-			return "registro";
-		}
-
-		iUsuarioService.guardar(usuario);
+		if(brUser.hasErrors()||brEmployee.hasErrors()) {
+			return "registro";}
+		
+		iUserService.guardarEmp_Usu(user, employee);
+		
 		status.setComplete();
+		
 		return "redirect:/index?exito";
 	}
 }

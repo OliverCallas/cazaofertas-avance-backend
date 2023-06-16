@@ -1,6 +1,7 @@
 package com.idat.cazaofertas.app.models.entity;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,50 +10,39 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
-
 @Entity
-@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
-public class Usuario {
-	
-	
-	
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "nickname")
-	private String nickname;
-
-	@Column(name = "username")
 	private String username;
 	
-	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "enabled")
 	private int enabled;
 	
-	@Column(name = "rol")
-	private String rol;
-	
-
+	private String authority;
 	
 	@PrePersist
 	public void prePresistRol() {
-		rol = "ROLE_USER";
+		authority = "ROLE_USER";
 		enabled = 1;
 	}
 	
-	public Usuario(Long id, String username, String password, int enabled, String rol) {
+	public User(Long id, String username, String password, int enabled, String authority) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
-		this.rol = rol;
+		this.authority = authority;
 	}
 
-	public Usuario() {
+	public User() {
 	}
 
 	public Long getId() {
@@ -73,11 +63,11 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRol() {
-		return rol;
+	public String getAuthority() {
+		return authority;
 	}
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	public int getEnabled() {
@@ -87,11 +77,4 @@ public class Usuario {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-
-
-	
-	
-
-	
-	
 }

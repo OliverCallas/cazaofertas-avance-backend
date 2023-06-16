@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
+/*import org.springframework.security.core.userdetails.User;*/
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
 
 @Configuration
 @EnableWebSecurity
@@ -26,10 +27,11 @@ public class SpringSecurityConfig {
  
 	@Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception{
-    	
-    	build.jdbcAuthentication().dataSource(datasource).passwordEncoder(passwordEncoder).
-    	usersByUsernameQuery("select username, password, enabled from usuarios where username=?").
-    	authoritiesByUsernameQuery("select username, rol from usuarios where username=?");
+		
+		build.jdbcAuthentication().dataSource(datasource).passwordEncoder(passwordEncoder).
+    	usersByUsernameQuery
+    	("select username, password, enabled from users where username=?").
+    	authoritiesByUsernameQuery("select username, authority from users where username=?");
     }
 	
     @Bean
@@ -39,11 +41,11 @@ public class SpringSecurityConfig {
  
         /*manager.createUser(User.withUsername("user")
                                .password(passwordEncoder.encode("123"))
-                               .roles("USER").build()); */
+                               .roles("USER").build()); 
  
         manager.createUser(User.withUsername("admin")
                                .password(passwordEncoder.encode("321"))
-                               .roles("ADMIN","USER").build());
+                               .roles("ADMIN","USER").build());*/
  
         return manager;
     } 
@@ -61,9 +63,9 @@ public class SpringSecurityConfig {
                 "/login.js",};
     	
         http.authorizeRequests().antMatchers("/","/index").permitAll()
-                .antMatchers("/menu").hasAnyRole("USER","ADMIN")
-                .antMatchers("/usuarios").hasAnyRole("ADMIN")
-                .antMatchers("/registro").hasAnyRole("ADMIN")
+                .antMatchers("/menu").hasAnyRole("ADMIN","USER")
+                .antMatchers("/usuarios").hasAnyRole("ADMIN","USER")
+                .antMatchers("/registro").hasAnyRole("ADMIN","USER")
                 .antMatchers(staticResources).permitAll()
                 .anyRequest().authenticated()
                 .and()

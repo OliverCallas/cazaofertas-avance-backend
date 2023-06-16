@@ -1,10 +1,194 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Caza Ofertas</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<link rel="stylesheet" href="cssmenu2.css">
+<link rel="stylesheet" href="css/publicaciones-css.css">
 </head>
+
 <body>
-<h1>ESTE ES EL MENU</h1>
+	<nav class="navbar navbar-default no-margin custom-navbar">
+  <div class="navbar-header fixed-brand">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+      <span class="glyphicon glyphicon-th-large custom-glyphicon" aria-hidden="true"></span>
+    </button>
+    <a class="navbar-brand custom-navbar-brand" href="#" style="font-size:30px;">Caza Ofertas</a>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
+          <span class="glyphicon glyphicon-th-large custom-glyphicon" aria-hidden="true"></span>
+        </button>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+		<div class="btn btn-secondary">
+			<form id="logoutForm" th:action="@{/logout}" method="post">
+				<button onclick="document.getElementById('logoutForm').submit();" type="submit">Sign Out</button>
+			</form>
+		</div>
+	
+  </div>
+  
+</nav>
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+		
+			<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+				
+				<!--//////////////////////////////// ///////////////////////////////////-->
+				
+				<li>
+					<a href="#">
+						<span class="fa-stack fa-lg pull-left">
+							<i class="fas fa-briefcase fa-stack-1x"></i>
+						</span>
+						Categorias
+					</a>
+					
+					<ul class="nav-pills nav-stacked" style="list-style-type: none;">
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link1</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link2</a>
+						</li>
+					</ul>
+				</li>
+					
+				<!--//////////////////////////////// ///////////////////////////////////-->
+				
+				<li> 
+					<a href="#">
+						<span class="fa-stack fa-lg pull-left"> 
+							<i class="fas fa-utensils fa-stack-1x"></i>
+						</span>
+						Restaurantes
+					</a>
+					
+					<ul class="nav-pills nav-stacked" style="list-style-type: none;">
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link1</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link2</a>
+						</li>
+					</ul>
+				</li>
+				
+				<!--//////////////////////////////// ///////////////////////////////////-->
+				<li>
+					<a href="#">
+						<span class="fa-stack fa-lg pull-left">
+							<i class="fas fa-shopping-cart fa-stack-1x"></i>
+						</span>
+						Supermercados
+					</a>
+					
+					<ul class="nav-pills nav-stacked" style="list-style-type: none;">
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link1</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa-stack fa-lg pull-left">
+									<i class="fa fa-flag fa-stack-1x ">
+									</i>
+								</span>
+									link2</a>
+						</li>
+					</ul>
+					
+				</li>
+				
+				<li>
+				
+				
+					
+				</li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+		        <div class="body-a">
+				    <h1 class="title-a">¡Ofertas del Dia!</h1>
+				    <div class="container-a">
+				        <div class="card-a" th:each="pub: ${publicacion_th}">
+				            <img src="img/ham-tambo.png" alt="">
+				            <h4 th:text="${pub.titulo}">NATURALEZA</h4>
+				            <p th:text="${pub.categoria}"></p>
+				            <p th:text="${pub.descripcion}"></p>
+				            <p th:text="${pub.ubicacion} + ' / ' + ${pub.fecha}"></p>
+				            <a href="">Comentar</a>
+				        </div>
+				    </div>
+				</div>
+    	</div>
+		<!-- /#page-content-wrapper -->
+		
+	
+		
+		
+	</div>
+	<!-- /#wrapper -->
+	<!-- jQuery -->
+
+	
+
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="scriptmenu2.js"></script>
+	<script>
+		$.sidebarMenu($('.sidebar-menu'))
+	</script>
+	
+	
+	
 </body>
+
 </html>

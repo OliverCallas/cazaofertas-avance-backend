@@ -46,8 +46,8 @@
 				</div>
 
 				<h1>Regístrate</h1>
-				<form th:action="@{/registro}" method="post" th:object="${usuario}">
-				
+				<form th:action="@{/registro}" method="post">
+				<div th:object="${user}">
 					<div class="form-group">
 						<label class="control-label" for="email">Usuario : </label> <input
 							id="username" type="text" class="form-control" th:field="*{username}"
@@ -58,7 +58,23 @@
 						<label class="control-label" for="password">Password : </label> <input
 							type="password" id="password" class="form-control" th:field="*{password}"
 							required autofocus="autofocus">
-					  </div><!--
+					</div>
+					</div>
+					
+					<div th:object="${employee}">
+					<div class="form-group">
+						<label class="control-label" for="nombre">Nombre : </label> <input
+							id="nombre" type="text" class="form-control" th:field="*{first_name}"
+							required autofocus="autofocus">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="dni">DNI : </label> <input
+							id="dni" type="text" class="form-control" th:field="*{document_id}"
+							required autofocus="autofocus">
+					</div>
+					</div>
+					  
+					  <!--
 					<div class="form-group">
 					<label class="control-label" for="rol">Rol : </label>
 					<input type="text" id="rol" class="form-control" th:field="*{rol}"

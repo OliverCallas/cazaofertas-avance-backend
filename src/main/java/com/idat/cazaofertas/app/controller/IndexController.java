@@ -11,11 +11,6 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping(value="/menu")
-	public String menu() {
-		return "menu";
-	}
-	
 	@GetMapping(value="/usuarios")
 	public String usuarios() {
 		return "usuarios";
