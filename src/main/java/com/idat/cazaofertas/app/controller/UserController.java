@@ -31,8 +31,8 @@ public class UserController {
 		return "registro";
 	}
 	
-	@PostMapping("/registro")
-	public String registrarUsuario(@Valid User user, BindingResult brUser, @Valid Employee employee, BindingResult brEmployee, Model model, SessionStatus status) {
+	@PostMapping("/registrosys")
+	public String registrarUsuarioSistema(@Valid User user, BindingResult brUser, @Valid Employee employee, BindingResult brEmployee, Model model, SessionStatus status) {
 		
 		if(brUser.hasErrors()||brEmployee.hasErrors()) {
 			return "registro";}

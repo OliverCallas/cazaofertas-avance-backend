@@ -1,112 +1,170 @@
-<!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head >
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ===== Iconscout CSS ===== -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="style.css">
-         
-    <title>Login</title> 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adda - Social Network HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/flaticon.css">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="assets/css/plugins/lightgallery.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
-<body>
-	
-    <div id="body">
-    <div class="container">
-        <div class="forms">
-        	<!-- Login Form -->
-            <div class="form login">
-            	<div class="container-img">
-            	<img class="logo" alt="Demasiado tiempo de carga" src="../img/logo.jpg">
-                </div>
 
-                <form th:action="@{/login}" method="post">
-                    <div class="input-field">
-                        <input type="text" placeholder="Escribe tu Correo" name="username" id="username" autofocus required />
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Escribe tu Contraseña" name="password" id="password" required />
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
-                    </div>
-                    <div th:if="${error != null}" >
-                    <br>
-                    <div  class="alert alert-danger" th:text="${error}"></div>
-                    </div>
-                    <div th:if="${success != null}" >
-                    <br>
-                    <div  class="alert alert-success" th:text="${success}"></div>
-                    </div>
-                    <div class="input-field button">
-                        <input type="submit" value="Ingresar">
-                    </div>
-                </form>
+<body class="bg-transparent">
 
-                <div class="login-signup">
-                    <span class="text">¿No tienes una cuenta?
-                        <a href="#" class="text signup-link">Registrate</a>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Registration Form -->
-            <div class="form signup">
-                <span class="title">Crea una Cuenta</span>
-
-                <form action="#">
-                    <div class="input-field">
-                        <input type="text" placeholder="Escribe tu Nombre" required>
-                        <i class="uil uil-user"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" placeholder="Escribe tu Correo" required>
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Escribe una Contraseña" required>
-                        <i class="uil uil-lock icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Confirma tu Contraseña" required>
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
-                    </div>
-
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="termCon">
-                            <label for="termCon" class="text">Acepto todos los Términos y Condiciones.</label>
+    <main>
+        <div class="main-wrapper pb-0 mb-0">
+            <div class="timeline-wrapper overflow-hidden">
+                <div class="timeline-header">
+                    <div class="container-fluid p-0">
+                        <div class="row g-0 align-items-center" style="background-color:  #92674d;">
+                        	<div class="col-lg-6">
+                                <div class="timeline-logo-area d-flex align-items-center">
+                                    <div class="timeline-logo">
+                                        <a href="index.html">
+                                            <img src="img/logo.jpg" alt="timeline logo">
+                                        </a>
+                                    </div>
+                                    <div class="timeline-tagline">
+                                        <h6 class="tagline">Se parte de nuestra comunidad ¡Caza Ofertas en todo el Peru!</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="login-area">
+                                    <form class="row align-items-center" th:action="@{/login}" method="post">
+                                        <div class="col-12 col-sm">
+                                            <input type="text" placeholder="Correo" class="single-field" name="username" id="username" autofocus required>
+                                        </div>
+                                        <div class="col-12 col-sm">
+                                            <input type="password" placeholder="Clave" class="single-field" name="password" id="password" required >
+                                        </div>
+                                        <div class="col-12 col-sm-auto">
+                                            <button class="login-btn" type="submit">Ingresar</button>
+                                        </div>
+                                    </form >
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="input-field button">
-                        <input type="button" value="Resgistrar">
+                </div>
+                <div class="timeline-page-wrapper bg-img" data-bg="assets/images/timeline/adda-timeline-ori.jpg" >
+                    <div class="container-fluid p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8 order-2 order-lg-1">
+                                <div class="timeline-bg-content bg-img" data-bg="assets/images/timeline/adda-timeline.jpg">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 order-1 order-lg-2 d-flex align-items-center justify-content-center bg-img" data-bg="assets/images/timeline/adda-timeline-color.jpg">
+                                <div class="signup-form-wrapper">
+                                	<div th:if="${error != null}" >
+					                    <div  class="alert alert-danger" th:text="${error}"></div>
+					                </div>
+					                <div th:if="${success != null}" >
+					                    <br>
+					                    <div  class="alert alert-success" th:text="${success}"></div>
+				                    </div>
+                                    <div class="signup-inner text-center">
+                                        <h3 class="title">Registrate a Caza Ofertas</h3>
+                                        <form class="signup-inner--form" th:action="@{/registrologin}" method="post">
+                                            <div class="row">
+                                                <div class="col-12" th:object="${user}">
+                                                    <input type="email" class="single-field" placeholder="Correo" id="username" th:field="*{username}" required>
+                                                </div>
+                                                <div class="col-12" th:object="${user}">
+                                                    <input type="password" class="single-field" placeholder="Clave" id="password" th:field="*{password}" required>
+                                                </div>
+                                                <div class="col-md-6" th:object="${profile_user}">
+                                                    <input type="text" class="single-field" placeholder="Nombres" th:field="*{first_name}" required>
+                                                </div>
+                                                <div class="col-md-6" th:object="${profile_user}">
+                                                    <input type="text" class="single-field" placeholder="Apellidos" th:field="*{last_name}">
+                                                </div>
+                                                <div class="col-md-6" th:object="${profile_user}">
+                                                    <select class="nice-select" name="sortby" th:field="*{gender}">
+                                                        <option value="">Genero</option>
+                                                        <option value="m">Masculino</option>
+                                                        <option value="f">Femenino</option>
+                                                        <option value="o">Otros</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6" th:object="${profile_user}">
+                                                    <select class="nice-select" name="sortby" th:field="*{country}">
+                                                        <option value="">Pais</option>
+                                                        <option value="peru">Peru</option>
+                                                        <option value="chile">Chile</option>
+                                                        <option value="venezuela">Venezuela</option>
+                                                        <option value="argentina">Argentina</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="submit-btn">Crear Cuenta</button>
+                                                </div>
+                                            </div>
+                                            <h6 class="terms-condition">Acepto todos los <a href="#">Terminos y Condiciones</a></h6>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </form>
-
-                <div class="login-signup">
-                    <span class="text">¿Tienes una cuenta?
-                        <a href="#" class="text login-link">Ingresar</a>
-                    </span>
                 </div>
             </div>
         </div>
-    </div>
-    
-    </div>
-    <div id="footer">
-    <div class="tyc">
-    	<h6 style="color:#9D9D9D ">Terminos y Condiciones | Politica de Privacidad</h6>
-    	<h6 style="color:#9D9D9D ">© 2023 Coryright. Caza Ofertas. Todos los Derechos Reservados</h6>
-    	</div>
-    </div>
+    </main>
 
-     <script src="login.js"></script> 
+    <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>

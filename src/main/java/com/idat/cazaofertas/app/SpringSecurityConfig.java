@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-/*import org.springframework.security.core.userdetails.User;*/
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;*/
+/*import org.springframework.security.core.userdetails.User;*/
+/*import org.springframework.security.core.userdetails.UserDetailsService;*/
+/*import org.springframework.security.provisioning.InMemoryUserDetailsManager;*/
 
 
 @Configuration
@@ -24,37 +26,22 @@ public class SpringSecurityConfig {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
- 
-	@Autowired
+	
+	//Inyecta el datasource y el passwordencoder al metodo void configureGlobal
+	@Autowired 
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception{
 		
+		//Busca por consulta SQL
 		build.jdbcAuthentication().dataSource(datasource).passwordEncoder(passwordEncoder).
-    	usersByUsernameQuery
-    	("select username, password, enabled from users where username=?").
+    	usersByUsernameQuery("select username, password, enabled from users where username=?").
     	authoritiesByUsernameQuery("select username, authority from users where username=?");
     }
-	
-    @Bean
-    public UserDetailsService userDetailsService() throws Exception {
- 
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
- 
-        /*manager.createUser(User.withUsername("user")
-                               .password(passwordEncoder.encode("123"))
-                               .roles("USER").build()); 
- 
-        manager.createUser(User.withUsername("admin")
-                               .password(passwordEncoder.encode("321"))
-                               .roles("ADMIN","USER").build());*/
- 
-        return manager;
-    } 
- 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
  
-    	//dar permiso a las carpetas static
     	String[] staticResources = {
+    			"/assets/**",
                 "/index.css",
                 "/img/**",
                 "/css/**",
@@ -62,19 +49,36 @@ public class SpringSecurityConfig {
                 "/style.css",
                 "/login.js",};
     	
-        http.authorizeRequests().antMatchers("/","/index").permitAll()
+        http.authorizeRequests()
+        		.antMatchers(staticResources).permitAll()
+        		.antMatchers("/","/index").permitAll()
                 .antMatchers("/menu").hasAnyRole("ADMIN","USER")
-                .antMatchers("/usuarios").hasAnyRole("ADMIN","USER")
-                .antMatchers("/registro").hasAnyRole("ADMIN","USER")
-                .antMatchers(staticResources).permitAll()
+                .antMatchers("/registro").permitAll()
+                .antMatchers("/registrosys").hasAnyRole("ADMIN")
+                .antMatchers("/registrologin").permitAll()
+                .antMatchers("/soloadmin").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/error");
  
         return http.build();
     }
     
-    
+    /* 
+    //Crear manualmente usuarios en memoria
+    @Bean
+    public UserDetailsService userDetailsService() throws Exception {
+ 
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+ 
+        manager.createUser(User.withUsername("user").password(passwordEncoder.encode("123")).roles("USER").build()); 
+        manager.createUser(User.withUsername("admin").password(passwordEncoder.encode("321")).roles("ADMIN","USER").build());
+ 
+        return manager;
+    } 
+    */
 }

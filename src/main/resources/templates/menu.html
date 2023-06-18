@@ -14,6 +14,9 @@
 </head>
 
 <body>
+	<div th:if="${info != null}" ><br>
+    <div  class="alert alert-danger" th:text="${info}"></div>
+    </div>
 	<nav class="navbar navbar-default no-margin custom-navbar">
   <div class="navbar-header fixed-brand">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">

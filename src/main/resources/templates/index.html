@@ -12,15 +12,13 @@
 	<div th:if="${info != null}" >
                     <br>
     <div  class="alert alert-danger" th:text="${info}"></div></div>
-	<h1>CAZA OFERTAS - ACTUALIZADO</h1>
+	<h1>LANDING PAGE</h1>
 
-	<a style="margin:15px;" class="btn btn-primary" th:href="@{/menu}">Menu</a>
-	<a style="margin:15px;" class="btn btn-primary" th:href="@{/usuarios}">Users</a>
-	<a style="margin:15px;" class="btn btn-primary" th:href="@{/registro}">Registro</a>
+	<a style="margin:15px;" class="btn btn-primary" th:href="@{/menu}">Empezar</a>
 	
 	<!-- iniciar sesion security -->
 	
-	
+	<!--
 	<div style="margin:50px;" class="navbar-nav navbar-right">
 	<div sec:authorize="!isAuthenticated()">
 		<a class="btn btn-outline-primary" th:href="@{/login}">Sing in</a>
@@ -36,7 +34,7 @@
 			</form>
 		</div>
 	</div>
-	</div>
+	</div> -->
 	
 	<p sec:authorize="isAuthenticated()">
 		Usuario: <span sec:authentication="name"></span> | Roles: <span
