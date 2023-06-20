@@ -31,7 +31,7 @@ public class SpringSecurityConfig {
 	@Autowired 
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception{
 		
-		//Busca por consulta SQL
+		//Busca registro del usuario por consulta SQL
 		build.jdbcAuthentication().dataSource(datasource).passwordEncoder(passwordEncoder).
     	usersByUsernameQuery("select username, password, enabled from users where username=?").
     	authoritiesByUsernameQuery("select username, authority from users where username=?");
@@ -47,7 +47,8 @@ public class SpringSecurityConfig {
                 "/css/**",
                 "/js/**",
                 "/style.css",
-                "/login.js",};
+                "/login.js",
+                };
     	
         http.authorizeRequests()
         		.antMatchers(staticResources).permitAll()
@@ -56,7 +57,6 @@ public class SpringSecurityConfig {
                 .antMatchers("/registro").permitAll()
                 .antMatchers("/registrosys").hasAnyRole("ADMIN")
                 .antMatchers("/registrologin").permitAll()
-                .antMatchers("/soloadmin").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

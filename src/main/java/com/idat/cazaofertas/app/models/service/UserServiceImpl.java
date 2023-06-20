@@ -37,6 +37,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
+	@Transactional
 	public void guardarEmp_Usu(User user, Employee employee) {
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPassword);
@@ -48,6 +49,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
+	@Transactional
 	public void guardarProf_Usu(User user, Profile_User profile_User) {
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPassword);

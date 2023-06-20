@@ -15,6 +15,5 @@ public class ConfigurationApp {
 	
 	public void addViewControllers(ViewControllerRegistry controllerRegistry) {
 		controllerRegistry.addViewController("/error");
-		controllerRegistry.addViewController("/soloadmin");
 	}
 }

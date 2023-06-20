@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.idat.cazaofertas.app.models.entity.Employee;
 import com.idat.cazaofertas.app.models.entity.User;
@@ -32,14 +31,12 @@ public class UserController {
 	}
 	
 	@PostMapping("/registrosys")
-	public String registrarUsuarioSistema(@Valid User user, BindingResult brUser, @Valid Employee employee, BindingResult brEmployee, Model model, SessionStatus status) {
+	public String registrarUsuarioSistema(@Valid User user, BindingResult brUser, @Valid Employee employee, BindingResult brEmployee, Model model) {
 		
 		if(brUser.hasErrors()||brEmployee.hasErrors()) {
 			return "registro";}
 		
 		iUserService.guardarEmp_Usu(user, employee);
-		
-		status.setComplete();
 		
 		return "redirect:/index?exito";
 	}
