@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.jpg">
 
     <!-- CSS
 	============================================ -->
@@ -53,47 +53,6 @@
                                     <li class="active"><a href="index.html">Inicio</a></li>
                                     <!--//////////// FIN INICIO ////////////-->
 
-                                    <!--//////////// INICIO MENSAJES ////////////-->
-                                    <li class="msg-trigger"><a class="msg-trigger-btn" href="#a">Mensajes</a>
-                                        <div class="message-dropdown" id="a">
-                                            <div class="dropdown-title">
-                                                <p class="recent-msg">Recientes</p>
-                                                <div class="message-btn-group">
-                                                    <button>Nuevo Mensaje</button>
-                                                </div>
-                                            </div>
-                                            <ul class="dropdown-msg-list">
-                                                <li class="msg-list-item d-flex justify-content-between">
-                                                    <!-- profile picture end -->
-                                                    <div class="profile-thumb">
-                                                        <figure class="profile-thumb-middle">
-                                                            <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
-                                                        </figure>
-                                                    </div>
-                                                    <!-- profile picture end -->
-
-                                                    <!-- message content start -->
-                                                    <div class="msg-content">
-                                                        <h6 class="author"><a href="profile.html">Mili Raoulin</a></h6>
-                                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default</p>
-                                                    </div>
-                                                    <!-- message content end -->
-
-                                                    <!-- message time start -->
-                                                    <div class="msg-time">
-                                                        <p>25 Apr 2019</p>
-                                                    </div>
-                                                    <!-- message time end -->
-                                                </li>
-                                            </ul>
-                                            <div class="msg-dropdown-footer">
-                                                <button>See all in messenger</button>
-                                                <button>Mark All as Read</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!--//////////// FIN MENSAJES ////////////-->
-
                                     <!--//////////// INICIO NOTIFICACIONES ////////////-->
                                     <li class="notification-trigger"><a class="msg-trigger-btn" href="#b">Notificaciones</a>
                                         <div class="message-dropdown" id="b">
@@ -115,22 +74,22 @@
 
                                                     <!-- message content start -->
                                                     <div class="msg-content notification-content">
-                                                        <a href="profile.html">Robert Faul</a>,
-                                                        <a href="profile.html">william jhon</a>
-                                                        <p>and 35 other people reacted to your photo</p>
+                                                        <a href="profile.html">Usuario 1</a>,
+                                                        <a href="profile.html">Usuario 2</a>
+                                                        <p>y otras 35 personas viero tu publicacion</p>
                                                     </div>
                                                     <!-- message content end -->
 
                                                     <!-- message time start -->
                                                     <div class="msg-time">
-                                                        <p>25 Apr 2019</p>
+                                                        <p>05 Julio 2023</p>
                                                     </div>
                                                     <!-- message time end -->
                                                 </li>
                                             </ul>
                                             <div class="msg-dropdown-footer">
-                                                <button>See all in messenger</button>
-                                                <button>Mark All as Read</button>
+                                                <button>Ver mas Mensajes</button>
+                                                <button>Marcar y Leido</button>
                                             </div>
                                         </div>
                                     </li>
@@ -147,7 +106,7 @@
                         <!-- brand logo start -->
                         <div class="brand-logo text-center">
                             <a href="index.html">
-                                <img src="assets/images/logo/logo.png" alt="brand logo">
+                                <img src="img/logo.jpg" alt="brand logo">
                             </a>
                         </div>
                         <!-- brand logo end -->
@@ -181,15 +140,14 @@
                                         </div>
                                         <div class="profile-body">
                                             <ul>
-                                                <li><a href="profile.html"><i class="flaticon-user"></i>Profile</a></li>
-                                                <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
-                                                <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                                <li><a href="profile.html"><i class="flaticon-user"></i>Perfil</a></li>
+                                                <li><a href="#"><i class="flaticon-document"></i>Actividad</a></li>
                                             </ul>
                                             <ul>
-                                                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Configuracion</a></li>
                                                 <li>
                                                 	<form id="logoutForm" th:action="@{/logout}" method="post">
-                                                		<a onclick="document.getElementById('logoutForm').submit();" type="submit"><i class="flaticon-unlock"></i>Sing out</a>
+                                                		<a onclick="document.getElementById('logoutForm').submit();" type="submit"><i class="flaticon-unlock"></i>Cerrar Sesion</a>
                                                 	</form>
                                                 </li>
                                             </ul>
@@ -212,34 +170,11 @@
             <div class="mobile-header position-relative ">
                 <div class="mobile-logo">
                     <a href="index.html">
-                        <img src="assets/images/logo/logo-white.png" alt="logo">
+                        <img src="img/logo.jpg" alt="logo">
                     </a>
                 </div>
                 <div class="mobile-menu w-100">
                     <ul>
-                        <li>
-                            <button class="notification request-trigger"><i class="flaticon-users"></i>
-                            </button>
-                            <ul class="frnd-request-list">
-                                <li>
-                                    <div class="frnd-request-member">
-                                        <figure class="request-thumb">
-                                            <a href="profile.html">
-                                                <img src="assets/images/profile/profile-midle-1.jpg" alt="proflie author">
-                                            </a>
-                                        </figure>
-                                        <div class="frnd-content">
-                                            <h6 class="author"><a href="profile.html">merry watson</a></h6>
-                                            <p class="author-subtitle">Works at HasTech</p>
-                                            <div class="request-btn-inner">
-                                                <button class="frnd-btn">confirm</button>
-                                                <button class="frnd-btn delete">delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
 
                         <li>
                             <button class="notification"><i class="flaticon-notification"></i>
@@ -275,13 +210,12 @@
                             </div>
                             <div class="profile-body">
                                 <ul>
-                                    <li><a href="profile.html"><i class="flaticon-user"></i>Profile</a></li>
-                                    <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
-                                    <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                    <li><a href="profile.html"><i class="flaticon-user"></i>Perfil</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Actividad</a></li>
                                 </ul>
                                 <ul>
-                                    <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
-                                    <li><a href="signup.html"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Configuracion</a></li>
+                                    <li><a href="signup.html"><i class="flaticon-unlock"></i>Cerrar Sesion</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -320,7 +254,7 @@
 
                             <!-- widget single item start -->
                             <div class="card widget-item">
-                                <h4 class="widget-title">page you may like</h4>
+                                <h4 class="widget-title">Mis Seguidos</h4>
                                 <div class="widget-body">
                                     <ul class="like-page-list-wrapper">
                                         <li class="unorder-list">
@@ -335,74 +269,15 @@
                                             <!-- profile picture end -->
 
                                             <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Travel The World</a></h3>
-                                                <p class="list-subtitle"><a href="#">adventure</a></p>
+                                                <h3 class="list-title"><a href="#">Tambo</a></h3>
+                                                <p class="list-subtitle"><a href="#">Bodegas</a></p>
                                             </div>
                                             <button class="like-button active">
                                                 <img class="heart" src="assets/images/icons/heart.png" alt="">
                                                 <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
                                             </button>
                                         </li>
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-10.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Foodcort Nirala</a></h3>
-                                                <p class="list-subtitle"><a href="#">food</a></p>
-                                            </div>
-                                            <button class="like-button">
-                                                <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                                <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-                                            </button>
-                                        </li>
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-5.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Rolin Theitar</a></h3>
-                                                <p class="list-subtitle"><a href="#">drama</a></p>
-                                            </div>
-                                            <button class="like-button">
-                                                <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                                <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-                                            </button>
-                                        </li>
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-4.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Active Mind</a></h3>
-                                                <p class="list-subtitle"><a href="#">fitness</a></p>
-                                            </div>
-                                            <button class="like-button">
-                                                <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                                <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-                                            </button>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -427,32 +302,33 @@
                                 <!-- share content box start -->
                                 <div class="share-content-box w-100">
                                     <form class="share-text-box">
-                                        <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something" data-bs-toggle="modal" data-bs-target="#textbox" id="email"></textarea>
-                                        <button class="btn-share" type="submit">share</button>
+                                        <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Publica alguna oferta ..." data-bs-toggle="modal" data-bs-target="#textbox" id="email"></textarea>
+                                        <button class="btn-share" type="submit">Publicar</button>
                                     </form>
                                 </div>
                                 <!-- share content box end -->
 
-                                <!-- Modal start -->
+                                <!-- Modal start --> <form th:action="@{/publicar_profile}" method="post" th:object="${publicacion}">
                                 <div class="modal fade" id="textbox" aria-labelledby="textbox">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Share Your Mood</h5>
+                                                <h5 class="modal-title">Comparte la Oferta que Cazaste</h5>
                                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body custom-scroll">
-                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Say Something"></textarea>
+                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Descripcion ..." th:field="*{descripcion}" required ></textarea>
+                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Imagen ..." ></textarea>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="post-share-btn" data-bs-dismiss="modal">cancel</button>
-                                                <button type="button" class="post-share-btn">post</button>
+                                                <button type="button" class="submit-btn" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="submit-btn">Publicar</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> </form>
                                 <!-- Modal end -->
                             </div>
                         </div>
@@ -473,7 +349,7 @@
                                 <!-- profile picture end -->
 
                                 <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">merry watson</a></h6>
+                                    <h6 class="author"><a href="profile.html">Usuario 345</a></h6>
                                     <span class="post-time" th:text="${pub.fecha}"></span>
                                 </div>
 
@@ -483,9 +359,8 @@
                                     <span></span>
                                     <div class="post-settings arrow-shape">
                                         <ul>
-                                            <li><button>copy link to adda</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed adda</button></li>
+                                            <li><button>Copiar Link</button></li>
+                                            <li><button>Comentar</button></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -504,7 +379,7 @@
                                 <div class="post-meta">
                                     <button class="post-meta-like">
                                         <i class="bi bi-heart-beat"></i>
-                                        <span>You and 201 people like this</span>
+                                        <span>201 dieron Me gusta a esta Publicacion</span>
                                         <strong>201</strong>
                                     </button>
                                     <ul class="comment-share-meta">
@@ -531,57 +406,10 @@
                         <aside class="widget-area">
                             <!-- widget single item start -->
                             <div class="card widget-item">
-                                <h4 class="widget-title">Recent Notifications</h4>
+                                <h4 class="widget-title">Notificaciones Recientes</h4>
                                 <div class="widget-body">
                                     <ul class="like-page-list-wrapper">
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-9.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                                                <p class="list-subtitle">5 min ago</p>
-                                            </div>
-                                        </li>
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-8.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                                                <p class="list-subtitle">10 min ago</p>
-                                            </div>
-                                        </li>
-                                        <li class="unorder-list">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-small">
-                                                        <img src="assets/images/profile/profile-35x35-7.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
-
-                                            <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                                                <p class="list-subtitle">18 min ago</p>
-                                            </div>
-                                        </li>
+                                        
                                         <li class="unorder-list">
                                             <!-- profile picture end -->
                                             <div class="profile-thumb">
@@ -594,8 +422,8 @@
                                             <!-- profile picture end -->
 
                                             <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                                                <p class="list-subtitle">25 min ago</p>
+                                                <h3 class="list-title"><a href="#">Usuario 34 hizo una nueva publicacion</a></h3>
+                                                <p class="list-subtitle">hace 25 min</p>
                                             </div>
                                         </li>
                                         <li class="unorder-list">
@@ -610,8 +438,8 @@
                                             <!-- profile picture end -->
 
                                             <div class="unorder-list-info">
-                                                <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                                                <p class="list-subtitle">39 min ago</p>
+                                                <h3 class="list-title"><a href="#">Usuario 23 le dio Me gusta a tu publicacion</a></h3>
+                                                <p class="list-subtitle">hace 39 min</p>
                                             </div>
                                         </li>
                                     </ul>

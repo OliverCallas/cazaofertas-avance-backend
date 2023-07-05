@@ -21,5 +21,10 @@ public class PublicacionService implements IPublicacionService {
 		return iPublicacionRepository.findAll();
 	}
 
+	@Override
+	public Publicacion guardar(Publicacion publicacion) {
+		return iPublicacionRepository.save(publicacion);
+	}
+
 	
 }

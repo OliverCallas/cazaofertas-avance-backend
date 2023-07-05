@@ -7,4 +7,6 @@ import com.idat.cazaofertas.app.models.entity.Publicacion;
 public interface IPublicacionService {
 	
 	public List<Publicacion> listar();
+	
+	Publicacion guardar (Publicacion publicacion);
 }
