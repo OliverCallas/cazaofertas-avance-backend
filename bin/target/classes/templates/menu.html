@@ -1,10 +1,497 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Caza Ofertas</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.jpg">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/flaticon.css">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="assets/css/plugins/lightgallery.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+
 <body>
-<h1>ESTE ES EL MENU</h1>
+
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky bg-white d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!--//////////// INICIO CABECERA IZQUIERDA ////////////-->
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <!--//////////// INCIO INICIO ////////////-->
+                                    <li class="active"><a href="index.html">Inicio</a></li>
+                                    <!--//////////// FIN INICIO ////////////-->
+
+                                    <!--//////////// INICIO NOTIFICACIONES ////////////-->
+                                    <li class="notification-trigger"><a class="msg-trigger-btn" href="#b">Notificaciones</a>
+                                        <div class="message-dropdown" id="b">
+                                            <div class="dropdown-title">
+                                                <p class="recent-msg">Recientes</p>
+                                                <button>
+                                                    <i class="flaticon-settings"></i>
+                                                </button>
+                                            </div>
+                                            <ul class="dropdown-msg-list">
+                                                <li class="msg-list-item d-flex justify-content-between">
+                                                    <!-- profile picture end -->
+                                                    <div class="profile-thumb">
+                                                        <figure class="profile-thumb-middle">
+                                                            <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                        </figure>
+                                                    </div>
+                                                    <!-- profile picture end -->
+
+                                                    <!-- message content start -->
+                                                    <div class="msg-content notification-content">
+                                                        <a href="profile.html">Usuario 1</a>,
+                                                        <a href="profile.html">Usuario 2</a>
+                                                        <p>y otras 35 personas viero tu publicacion</p>
+                                                    </div>
+                                                    <!-- message content end -->
+
+                                                    <!-- message time start -->
+                                                    <div class="msg-time">
+                                                        <p>05 Julio 2023</p>
+                                                    </div>
+                                                    <!-- message time end -->
+                                                </li>
+                                            </ul>
+                                            <div class="msg-dropdown-footer">
+                                                <button>Ver mas Mensajes</button>
+                                                <button>Marcar y Leido</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--//////////// FIN NOTIFICACIONES ////////////-->
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- header top navigation start -->
+                    </div>
+                    <!--//////////// FIN CABECERA IZQUIERDA ////////////-->
+
+                    <!--//////////// INICIO CABECERA CENTRAL ////////////-->
+                    <div class="col-md-2">
+                        <!-- brand logo start -->
+                        <div class="brand-logo text-center">
+                            <a href="index.html">
+                                <img src="img/logo.jpg" alt="brand logo">
+                            </a>
+                        </div>
+                        <!-- brand logo end -->
+                    </div>
+                    <!--//////////// FIN CEBECERA CENTRAL ////////////-->
+
+                    <!--//////////// INICIO CABECERA DERECHA ////////////-->
+                    <div class="col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-end">
+                            <!-- INICIO BUSCADOR-->
+                            <div class="header-top-search">
+                                <form class="top-search-box">
+                                    <input type="text" placeholder="Buscar" class="top-search-field">
+                                    <button class="top-search-btn"><i class="flaticon-search"></i></button>
+                                </form>
+                            </div>
+                            <!-- FIN BUSCADOR-->
+
+                            <!-- INICIO PERFIL-->
+                            <div class="profile-setting-box">
+                                <div class="profile-thumb-small">
+                                    <a href="javascript:void(0)" class="profile-triger">
+                                        <figure>
+                                            <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                        </figure>
+                                    </a>
+                                    <div class="profile-dropdown">
+                                        <div class="profile-head" sec:authorize="isAuthenticated()">
+                                            <h5 class="name" th:text="${profile_th.first_name} +' '+ ${profile_th.last_name}"><a href="#"></a></h5>
+                                            <a class="mail" href="#" sec:authentication="name"></a>
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li><a href="profile.html"><i class="flaticon-user"></i>Perfil</a></li>
+                                                <li><a href="#"><i class="flaticon-document"></i>Actividad</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Configuracion</a></li>
+                                                <li>
+                                                	<form id="logoutForm" th:action="@{/logout}" method="post">
+                                                		<a onclick="document.getElementById('logoutForm').submit();" type="submit"><i class="flaticon-unlock"></i>Cerrar Sesion</a>
+                                                	</form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- INICIO PERFIL-->
+                        </div>
+                    </div>
+                    <!--//////////// FIN CABECERA DERECHA ////////////-->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none">
+            <div class="mobile-header position-relative ">
+                <div class="mobile-logo">
+                    <a href="index.html">
+                        <img src="img/logo.jpg" alt="logo">
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+
+                        <li>
+                            <button class="notification"><i class="flaticon-notification"></i>
+                            </button>
+                        </li>
+                        
+                        <li>
+                            <button class="search-trigger">
+                                <i class="search-icon flaticon-search"></i>
+                                <i class="close-icon flaticon-cross-out"></i>
+                            </button>
+                            <div class="mob-search-box">
+                                <form class="mob-search-inner">
+                                    <input type="text" placeholder="Buscar" class="mob-search-field">
+                                    <button class="mob-search-btn"><i class="flaticon-search"></i></button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-header-profile">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb profile-setting-box">
+                        <a href="javascript:void(0)" class="profile-triger">
+                            <figure class="profile-thumb-middle">
+                                <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                            </figure>
+                        </a>
+                        <div class="profile-dropdown text-left">
+                            <div class="profile-head" sec:authorize="isAuthenticated()">
+                                <h5 class="name" th:text="${profile_th.first_name} +' '+ ${profile_th.last_name}"><a href="#"></a></h5>
+                                <a class="mail" href="#" sec:authentication="name"></a>
+                            </div>
+                            <div class="profile-body">
+                                <ul>
+                                    <li><a href="profile.html"><i class="flaticon-user"></i>Perfil</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Actividad</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Configuracion</a></li>
+                                    <li><a href="signup.html"><i class="flaticon-unlock"></i>Cerrar Sesion</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <main>
+        <div class="main-wrapper pt-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 order-2 order-lg-1">
+                        <aside class="widget-area">
+                            <!-- widget single item start -->
+                            <div class="card card-profile widget-item p-0">
+                                <div class="profile-banner">
+                                    <figure class="profile-banner-small">
+                                        <a href="profile.html">
+                                            <img src="assets/images/banner/banner-small.jpg" alt="">
+                                        </a>
+                                        <a href="profile.html" class="profile-thumb-2">
+                                            <img src="assets/images/profile/profile-midle-1.jpg" alt="">
+                                        </a>
+                                    </figure>
+                                    <div class="profile-desc text-center" sec:authorize="isAuthenticated()">
+                                        <h6 class="author" th:text="${profile_th.first_name} +' '+ ${profile_th.last_name}"><a href="profile.html"></a></h6>
+                                        <p>Pais: <span th:text="${profile_th.country}"></span></p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- widget single item start -->
+
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <h4 class="widget-title">Mis Seguidos</h4>
+                                <div class="widget-body">
+                                    <ul class="like-page-list-wrapper">
+                                        <li class="unorder-list">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb">
+                                                <a href="#">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <!-- profile picture end -->
+
+                                            <div class="unorder-list-info">
+                                                <h3 class="list-title"><a href="#">Tambo</a></h3>
+                                                <p class="list-subtitle"><a href="#">Bodegas</a></p>
+                                            </div>
+                                            <button class="like-button active">
+                                                <img class="heart" src="assets/images/icons/heart.png" alt="">
+                                                <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            </button>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+                        </aside>
+                    </div>
+
+                    <div class="col-lg-6 order-1 order-lg-2">
+                        <!-- share box start -->
+                        <div class="card card-small">
+                            <div class="share-box-inner">
+                                <!-- profile picture end -->
+                                <div class="profile-thumb">
+                                    <a href="#">
+                                        <figure class="profile-thumb-middle">
+                                            <img src="assets/images/profile/profile-small-37.jpg" alt="profile picture">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- profile picture end -->
+
+                                <!-- share content box start -->
+                                <div class="share-content-box w-100">
+                                    <form class="share-text-box">
+                                        <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Publica alguna oferta ..." data-bs-toggle="modal" data-bs-target="#textbox" id="email"></textarea>
+                                        <button class="btn-share" type="submit">Publicar</button>
+                                    </form>
+                                </div>
+                                <!-- share content box end -->
+
+                                <!-- Modal start --> <form th:action="@{/publicar_profile}" method="post" th:object="${publicacion}">
+                                <div class="modal fade" id="textbox" aria-labelledby="textbox">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Comparte la Oferta que Cazaste</h5>
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body custom-scroll">
+                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Descripcion ..." th:field="*{descripcion}" required ></textarea>
+                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Imagen ..." ></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="submit-btn" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="submit-btn">Publicar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> </form>
+                                <!-- Modal end -->
+                            </div>
+                        </div>
+                        <!-- share box end -->
+
+                        <!-- post status start -->
+                        <div class="card" th:each="pub: ${publicacion_th}">
+                            <!-- post title start -->
+                            <div class="post-title d-flex align-items-center">
+                                <!-- profile picture end -->
+                                <div class="profile-thumb">
+                                    <a href="#">
+                                        <figure class="profile-thumb-middle">
+                                            <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- profile picture end -->
+
+                                <div class="posted-author">
+                                    <h6 class="author"><a href="profile.html">Usuario 345</a></h6>
+                                    <span class="post-time" th:text="${pub.fecha}"></span>
+                                </div>
+
+                                <div class="post-settings-bar">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <div class="post-settings arrow-shape">
+                                        <ul>
+                                            <li><button>Copiar Link</button></li>
+                                            <li><button>Comentar</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- post title start -->
+                            <div class="post-content">
+                                <p class="post-desc" th:text="${pub.descripcion}">
+                                </p>
+                                <div class="post-thumb-gallery">
+                                    <figure class="post-thumb img-popup">
+                                        <a href="assets/images/ham-tambo.png">
+                                            <img src="assets/images/ham-tambo.png" alt="post image">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="post-meta">
+                                    <button class="post-meta-like">
+                                        <i class="bi bi-heart-beat"></i>
+                                        <span>201 dieron Me gusta a esta Publicacion</span>
+                                        <strong>201</strong>
+                                    </button>
+                                    <ul class="comment-share-meta">
+                                        <li>
+                                            <button class="post-comment">
+                                                <i class="bi bi-chat-bubble"></i>
+                                                <span>41</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="post-share">
+                                                <i class="bi bi-share"></i>
+                                                <span>07</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- post status end -->
+                    </div>
+
+                    <div class="col-lg-3 order-3">
+                        <aside class="widget-area">
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <h4 class="widget-title">Notificaciones Recientes</h4>
+                                <div class="widget-body">
+                                    <ul class="like-page-list-wrapper">
+                                        
+                                        <li class="unorder-list">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb">
+                                                <a href="#">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="assets/images/profile/profile-35x35-6.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <!-- profile picture end -->
+
+                                            <div class="unorder-list-info">
+                                                <h3 class="list-title"><a href="#">Usuario 34 hizo una nueva publicacion</a></h3>
+                                                <p class="list-subtitle">hace 25 min</p>
+                                            </div>
+                                        </li>
+                                        <li class="unorder-list">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb">
+                                                <a href="#">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="assets/images/profile/profile-35x35-4.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <!-- profile picture end -->
+
+                                            <div class="unorder-list-info">
+                                                <h3 class="list-title"><a href="#">Usuario 23 le dio Me gusta a tu publicacion</a></h3>
+                                                <p class="list-subtitle">hace 39 min</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="bi bi-finger-index"></i>
+    </div>
+    <!-- Scroll to Top End -->
+
+    <!-- footer area start -->
+    <footer class="d-none d-lg-block">
+        
+    </footer>
+    <!-- footer area end -->
+
+    <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
