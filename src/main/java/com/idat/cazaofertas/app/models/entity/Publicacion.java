@@ -38,8 +38,8 @@ public class Publicacion {
 	private String descripcion;
 	
 	@Column(name = "fecha")
-	@Temporal(TemporalType.DATE) // indicar el formato en que se guardara la fecha: solo dia,mes,año, completo ,solo hora, etc
-	@DateTimeFormat(pattern =  "yyyy-MM-dd")
+	@Temporal(TemporalType.TIMESTAMP) // Indica que se almacenará la fecha y hora completa
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") // Patrón de formato para mostrar en las vistas
 	private Date fecha;
 	
 	@Column(name = "estado")

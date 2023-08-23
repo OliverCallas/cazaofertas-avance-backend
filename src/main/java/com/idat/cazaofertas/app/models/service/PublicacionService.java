@@ -18,7 +18,7 @@ public class PublicacionService implements IPublicacionService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Publicacion> listar() {
-		return iPublicacionRepository.findAll();
+		return iPublicacionRepository.findAllByFechaPublicacionDesc();
 	}
 
 	@Override
