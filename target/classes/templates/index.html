@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8" />
-<title>Index</title>
-
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <link rel="stylesheet" th:href="@{estilos.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet" /> 
 </head>
+
 <body>
-<!--
-	<div th:if="${info != null}" >
-                    <br>
-    <div  class="alert alert-danger" th:text="${info}"></div></div>-->
-	<h1>LANDING PAGE</h1>
 
-	<a style="margin:15px;" class="btn btn-primary" th:href="@{/menu}">Empezar</a>
-	
-	<!-- iniciar sesion security -->
-	
-	<!--
-	<div style="margin:50px;" class="navbar-nav navbar-right">
-	<div sec:authorize="!isAuthenticated()">
-		<a class="btn btn-outline-primary" th:href="@{/login}">Sing in</a>
-	</div>
-	<div sec:authorize="isAuthenticated()" class="dropdown show">
-	<a	class="btn btn-outline-primary dropdown-toggle" href="#" role="button"
-		id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-		aria-expanded="false"><span sec:authentication="name"></span></a>
-
-		<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<form id="logoutForm" th:action="@{/logout}" method="post">
-				<button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit">Sign Out</button>
-			</form>
-		</div>
-	</div>
-	</div> -->
-	
-	<p sec:authorize="isAuthenticated()">
-		Usuario: <span sec:authentication="name"></span> | Roles: <span
-			sec:authentication="principal.authorities"></span>
-	</p>
-
-
-	<script th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
-	<script th:src="@{/js/popper.min.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
+<header>
+        <div class="container">
+            <nav>
+                <a href="#" id="icono" class="icono">Menú</a>
+                <div class="enlaces uno" id="enlaces">
+                    <a th:href="@{/login}">Login</a>
+                </div>
+            </nav>
+            <div class="textos">
+                <h1>CAZA OFERTAS</h1>
+                <h2>Las mejores ofertas</h2>
+                <a th:href="@{/menu}">Empezar</a>
+            </div>
+            <img src="vector.png" alt="">
+        </div>
+    </header>
+    <div class="wave">
+        <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </div>
+	<script th:src="@{script.js}"></script>
 </body>
+
 </html>

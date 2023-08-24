@@ -48,6 +48,9 @@ public class SpringSecurityConfig {
                 "/js/**",
                 "/style.css",
                 "/login.js",
+                "/estilos.css",
+                "/script.js",
+                "/vector.png"
                 };
     	
         http.authorizeRequests()

@@ -308,7 +308,7 @@
                                 </div>
                                 <!-- share content box end -->
 
-                                <!-- Modal start --> <form th:action="@{/publicar_profile}" method="post" th:object="${publicacion}">
+                                <!-- Modal start --> <form th:action="@{/publicar_profile}" method="post" th:object="${publicacion}" enctype="multipart/form-data">
                                 <div class="modal fade" id="textbox" aria-labelledby="textbox">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -320,7 +320,7 @@
                                             </div>
                                             <div class="modal-body custom-scroll">
                                                 <textarea name="share" class="share-field-big custom-scroll" placeholder="Descripcion ..." th:field="*{descripcion}" required ></textarea>
-                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Imagen ..." ></textarea>
+                                                <input name="file" type="file">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="submit-btn" data-bs-dismiss="modal">Cancelar</button>
@@ -372,7 +372,7 @@
                                 <div class="post-thumb-gallery">
                                     <figure class="post-thumb img-popup">
                                         <a href="assets/images/ham-tambo.png">
-                                            <img src="assets/images/ham-tambo.png" alt="post image">
+                                            <img th:src="@{'/uploads/' + ${pub.imagen}}" alt="post image">
                                         </a>
                                     </figure>
                                 </div>
